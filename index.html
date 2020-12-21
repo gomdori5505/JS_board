@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+        <!-- 뷰포트 -->
+        <meta name="viewport" content="width=device-width" initial-scale="1">
+        <!-- 합쳐지고 최소화된 최신 CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+        <!-- 부가적인 테마 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+        <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+        <script src="https://pagination.js.org/dist/2.1.5/pagination.min.js"></script>
+        <title>게시판 웹 사이트</title>
+    </head>
+    <body>
+        <h1>LSK Board</h1>
+        <!-- 게시판 -->
+        <div class="container">
+            <div class="row">
+                <table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
+                    <thead>
+                        <tr>
+                            <th style = "background-color:#eeeeee; text-align:center;">Seq</th>
+                            <th style = "background-color:#eeeeee; text-align:center;">Title</th>
+                            <th style = "background-color:#eeeeee; text-align:center;">Nick</th>
+                            <th style = "background-color:#eeeeee; text-align:center;">Date</th>
+                            <th style = "background-color:#eeeeee; text-align:center;">Hit</th>
+                        </tr>
+                    </thead>
+                </table>
+            <!-- <a href="" class="btn btn-primary pull-right">글쓰기</a> -->
+            </div>
+        </div>
+    </body>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyBTfiMp9ZQXj67XCid4C5yiHL_c4EKSaXY",
+        authDomain: "board-af8be.firebaseapp.com",
+        databaseURL: "https://board-af8be-default-rtdb.firebaseio.com",
+        projectId: "board-af8be",
+        storageBucket: "board-af8be.appspot.com",
+        messagingSenderId: "298869733797",
+        appId: "1:298869733797:web:ce4654d60fdfca5c32104c"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="js/getData.js"></script>
+</html>
