@@ -20,7 +20,7 @@ function list(data) {
         tr.appendChild(tdDate);
         tr.appendChild(tdHit);
 
-        tdSeq.innerText = key;
+        tdSeq.innerText = Number(key)+1;
         tdTitle.innerText = data[key].title;
         tdNick.innerText = data[key].nick;
         tdDate.innerText = `${regDateObj.getFullYear()}-${addZero(regDateObj.getMonth())}-${addZero(regDateObj.getDay())}`;
