@@ -6,6 +6,6 @@ fetch("https://board-af8be-default-rtdb.firebaseio.com/board.json")
 .then(data => {
     // json 출력
     console.log(data);
-    list(data);
+    paging(data);
 })
 .catch(err => console.log("error:", err))
