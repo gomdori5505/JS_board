@@ -39,12 +39,13 @@ function boardRead(data) {
     }
 
     const korKeys = {
-        "title" : "제목",
-        "nick" : "작성자",
-        "hit" : "조회수",
-        "regDateTime" : "작성일",
-        "editDateTime" : "수정일",
-        "content" : "내용"
+        seq: "번호",
+        title: "제목",
+        nick: "작성자",
+        hit: "조회수",
+        regDateTime: "작성일",
+        editDateTime: "수정일",
+        content: "내용"
     }
     
     var i = 0;
