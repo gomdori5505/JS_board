@@ -54,7 +54,7 @@ function boardRead(data) {
         td1 = tr.querySelectorAll("td")[0],
         td2 = tr.querySelectorAll("td")[1];
         td1.innerText = korKeys[key];
-        key === "seq" ? td2.innerText = ++data[key] : td2.innerText = data[key];
+        key === "seq" ? td2.innerText = data[key] + 1 : td2.innerText = data[key];
         i++;
     }
 }
