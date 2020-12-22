@@ -65,7 +65,7 @@ function renderPagination(page, data, paginationCount, totalPaginationBlock, tot
             '<li class="active"><a href="#">' + index + "</a></li>" : "<li class='go_page'><a href='#' data-value="+ index +">" + index + "</a></li>";
     }
 
-    if (block < totalPaginationBlock) paginationHTML += "<li class='next next_page'><a href='#'><span>»›</span></a></li>";
+    if (block < totalPaginationBlock) paginationHTML += "<li class='next next_page'><a href='#'><span>›</span></a></li>";
     if (page < totalPage) paginationHTML += "<li class='next last_page'><a href='#'><span>»</span></a></li>";
 
     pagination.innerHTML = paginationHTML;
