@@ -16,6 +16,7 @@ function renderTable(page, data, totalListCount, listCountPerPage) {
         const tr = document.createElement("tr"),
         tdSeq = document.createElement("td"),
         tdTitle = document.createElement("td"),
+        aTitle = document.createElement("a"),
         tdNick = document.createElement("td"),
         tdDate = document.createElement("td"),
         tdHit = document.createElement("td");
@@ -24,17 +25,18 @@ function renderTable(page, data, totalListCount, listCountPerPage) {
         tbody.appendChild(tr);
         tr.appendChild(tdSeq);
         tr.appendChild(tdTitle);
+        tdTitle.appendChild(aTitle);
         tr.appendChild(tdNick);
         tr.appendChild(tdDate);
         tr.appendChild(tdHit);
 
         tdSeq.innerText = Number(seq)+1;
-        tdTitle.innerText = data[seq].title;
+        aTitle.innerText = data[seq].title;
         tdNick.innerText = data[seq].nick;
         tdDate.innerText = `${regDateObj.getFullYear()}-${addZero(regDateObj.getMonth() + 1)}-${addZero(regDateObj.getDate())}`;
         tdHit.innerText = data[seq].hit;
-
-        tdTitle.addEventListener('click', () => {
+        
+        aTitle.addEventListener('click', () => {
             boardRead(data[seq]);
         });
     }
