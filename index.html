@@ -40,6 +40,25 @@
         </div>
         <!-- 글읽기 -->
         <div id="boardRead" class="container"></div>
+        <!-- 글쓰기 -->
+        <div id="boardWrite" class="container">
+            <h4>글쓰기</h4>
+            <form>
+                <div class="form-group">
+                  <label for="titleInput">제목</label>
+                  <input type="text" class="form-control" id="titleInput">
+                </div>
+                <div class="form-group">
+                    <label for="nickInput">작성자</label>
+                    <input type="text" class="form-control" id="nickInput">
+                  </div>
+                <div class="form-group">
+                  <label for="contentTextarea">내용</label>
+                  <textarea class="form-control" id="contentTextarea" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">등록</button>
+              </form>
+        </div>
     </body>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -66,4 +85,5 @@
     <script src="js/list.js"></script>
     <script src="js/paging.js"></script>
     <script src="js/read.js"></script>
+    <script src="js/write.js"></script>
 </html>

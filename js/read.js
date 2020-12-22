@@ -23,7 +23,7 @@ function boardRead(data) {
     table.classList.add("table");
     table.classList.add("table-striped");
     th.colSpan = 3;
-    th.innerText = "글 보기";
+    th.innerText = "글보기";
 
     table.appendChild(tbody);
     
