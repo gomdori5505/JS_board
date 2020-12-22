@@ -20,22 +20,43 @@
     <body>
         <h1>LSK Board</h1>
         <!-- 게시판 -->
-        <div class="container">
+        <div id="boardList" class="container">
             <div class="row">
                 <table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
                     <thead>
                         <tr>
-                            <th style = "background-color:#eeeeee; text-align:center;">Seq</th>
-                            <th style = "background-color:#eeeeee; text-align:center;">Title</th>
-                            <th style = "background-color:#eeeeee; text-align:center;">Nick</th>
-                            <th style = "background-color:#eeeeee; text-align:center;">Date</th>
-                            <th style = "background-color:#eeeeee; text-align:center;">Hit</th>
+                            <th style="background-color:#eeeeee; text-align:center;">Seq</th>
+                            <th style="background-color:#eeeeee; text-align:center;">Title</th>
+                            <th style="background-color:#eeeeee; text-align:center;">Nick</th>
+                            <th style="background-color:#eeeeee; text-align:center;">Date</th>
+                            <th style="background-color:#eeeeee; text-align:center;">Hit</th>
                         </tr>
                     </thead>
                 </table>
-                <div class="paging">
-                    
-                </div>
+                <!-- 페이징 -->
+                <div id="paging" class="container"></div>
+            </div>
+        </div>
+        <!-- 글읽기 -->
+        <div id="boardRead" class="container">
+            <div class="row">
+                <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+                    <thead>
+                        <tr>
+                            <th colspan="3" style="background-color: #eeeeee; text-align: center;">글 보기</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="width: 20%;">번호</td>
+                            <td colspan="2">1</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%;">제목</td>
+                            <td colspan="2">abc</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </body>
@@ -63,4 +84,5 @@
     <script src="js/getData.js"></script>
     <script src="js/list.js"></script>
     <script src="js/paging.js"></script>
+    <script src="js/read.js"></script>
 </html>

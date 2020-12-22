@@ -1,16 +1,17 @@
 function renderTable(page, data, totalListCount, listCountPerPage) {
-    const table = document.querySelector(".table");
-    const tbody = document.createElement("tbody");
-    const startNum = (listCountPerPage * (page - 1));
-    const endNum = ((listCountPerPage * page) >= totalListCount) ? totalListCount : (listCountPerPage * page);
+    const boardListDiv = document.querySelector("#boardList"),
+    table = boardListDiv.querySelector(".table"),
+    tbody = document.createElement("tbody"),
+    startNum = (listCountPerPage * (page - 1)),
+    endNum = ((listCountPerPage * page) >= totalListCount) ? totalListCount : (listCountPerPage * page);
 
-    if(document.querySelector("tbody")) {
-        const tbody = document.querySelector("tbody")
+    if(table.querySelector("tbody")) {
+        const tbody = table.querySelector("tbody");
         table.removeChild(tbody);
     }
 
-    for(let key = startNum; key < endNum; key ++) {
-        const regDateObj = new Date(data[key].regDateTime);
+    for(let seq = startNum; seq < endNum; seq ++) {
+        const regDateObj = new Date(data[seq].regDateTime);
 
         const tr = document.createElement("tr"),
         tdSeq = document.createElement("td"),
@@ -27,18 +28,22 @@ function renderTable(page, data, totalListCount, listCountPerPage) {
         tr.appendChild(tdDate);
         tr.appendChild(tdHit);
 
-        tdSeq.innerText = Number(key)+1;
-        tdTitle.innerText = data[key].title;
-        tdNick.innerText = data[key].nick;
+        tdSeq.innerText = Number(seq)+1;
+        tdTitle.innerText = data[seq].title;
+        tdNick.innerText = data[seq].nick;
         tdDate.innerText = `${regDateObj.getFullYear()}-${addZero(regDateObj.getMonth() + 1)}-${addZero(regDateObj.getDate())}`;
-        tdHit.innerText = data[key].hit;
+        tdHit.innerText = data[seq].hit;
+
+        tdTitle.addEventListener('click', () => {
+            boardRead(data[seq]);
+        });
     }
 }
 
 function renderPagination(page, data, paginationCount, totalPaginationBlock, totalPage) {
-    const paging = document.querySelector(".paging");
-    if(document.querySelector(".pagination")) {
-        var pagination = document.querySelector(".pagination");
+    const paging = document.querySelector("#paging");
+    if(paging.querySelector(".pagination")) {
+        var pagination = paging.querySelector(".pagination");
     } else {
         var pagination = document.createElement("ul");
         paging.appendChild(pagination);
@@ -62,36 +67,36 @@ function renderPagination(page, data, paginationCount, totalPaginationBlock, tot
     if (page < totalPage) paginationHTML += "<li class='next last_page'><a href='#'><span>»</span></a></li>";
 
     pagination.innerHTML = paginationHTML;
-    addEventPagination(data, startPage, endPage, totalPage);
+    addEventPagination(data, startPage, endPage, totalPage, pagination);
 }
 
-function addEventPagination(data, startPage, endPage, totalPage) {
-    if (!!document.querySelector(".first_page")) {
-        document.querySelector(".first_page").addEventListener('click', () => {
+function addEventPagination(data, startPage, endPage, totalPage, pagination) {
+    if (!!pagination.querySelector(".first_page")) {
+        pagination.querySelector(".first_page").addEventListener('click', () => {
             renderTableAndPagination(1, data);
         });
     }
 
-    if (!!document.querySelector(".back_page")) {
-        document.querySelector(".back_page").addEventListener('click', () => {
+    if (!!pagination.querySelector(".back_page")) {
+        pagination.querySelector(".back_page").addEventListener('click', () => {
             renderTableAndPagination(startPage-1, data);
         });
     }
 
-    document.querySelectorAll(".go_page").forEach(goPage => {
+    pagination.querySelectorAll(".go_page").forEach(goPage => {
         goPage.addEventListener('click', e => {
             renderTableAndPagination(parseInt(e.target.getAttribute('data-value')), data);
         });
     });
 
-    if (!!document.querySelector(".next_page")) {
-        document.querySelector(".next_page").addEventListener('click', () => {
+    if (!!pagination.querySelector(".next_page")) {
+        pagination.querySelector(".next_page").addEventListener('click', () => {
             renderTableAndPagination(endPage + 1, data);
         });
     }
 
-    if (!!document.querySelector(".last_page")) {
-        document.querySelector(".last_page").addEventListener('click', () => {
+    if (!!pagination.querySelector(".last_page")) {
+        pagination.querySelector(".last_page").addEventListener('click', () => {
             renderTableAndPagination(totalPage, data);
         });
     }
