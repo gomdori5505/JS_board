@@ -1,3 +1,14 @@
+function writeSubmit(data) {
+    const boardWriteDiv = document.querySelector("#boardWrite"),
+    titleInput = boardWriteDiv.querySelector("#titleInput"),
+    nickInput = boardWriteDiv.querySelector("#nickInput"),
+    contentTextarea = boardWriteDiv.querySelector("#contentTextarea"),
+    submit = boardWriteDiv.querySelector("button");
+    submit.addEventListener('click', () => {
+        writeBoard(titleInput, nickInput, contentTextarea, adjustData(data));
+    });
+}
+
 function writeBoard(titleInput, nickInput, contentTextarea, newData) {
     const now = new Date(),
     newSeq = Object.keys(newData).length,
@@ -30,23 +41,12 @@ function postData(seq, title, nick, content, hit, dateTime) {
         if(xhr.status === 200 || xhr.status === 201) { // 201: Created
             console.log(xhr.responseText);
             empty();
-            getData(URL);
+            location.reload();
         } else {
             console.log("Error!");
             console.log(xhr.status);
         }
     };
-}
-
-function writeSubmit(data) {
-    const boardWriteDiv = document.querySelector("#boardWrite"),
-    titleInput = boardWriteDiv.querySelector("#titleInput"),
-    nickInput = boardWriteDiv.querySelector("#nickInput"),
-    contentTextarea = boardWriteDiv.querySelector("#contentTextarea"),
-    submit = boardWriteDiv.querySelector("button");
-    submit.addEventListener('click', () => {
-        writeBoard(titleInput, nickInput, contentTextarea, adjustData(data));
-    });
 }
 
 function empty() {

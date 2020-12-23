@@ -1,4 +1,4 @@
-function renderTable(page, data, totalListCount, listCountPerPage) {
+function renderTable(page, newData, totalListCount, listCountPerPage, data) {
     const boardListDiv = document.querySelector("#boardList"),
     table = boardListDiv.querySelector(".table"),
     tbody = document.createElement("tbody"),
@@ -10,8 +10,8 @@ function renderTable(page, data, totalListCount, listCountPerPage) {
         table.removeChild(tbody);
     }
 
-    for(let seq = startNum; seq < endNum; seq ++) {
-        const regDateObj = new Date(data[seq].regDateTime);
+    for(let num = startNum; num < endNum; num ++) {
+        const regDateObj = new Date(newData[num].regDateTime);
 
         const tr = document.createElement("tr"),
         tdSeq = document.createElement("td"),
@@ -19,7 +19,8 @@ function renderTable(page, data, totalListCount, listCountPerPage) {
         aTitle = document.createElement("a"),
         tdNick = document.createElement("td"),
         tdDate = document.createElement("td"),
-        tdHit = document.createElement("td");
+        tdHit = document.createElement("td"),
+        uniqueKey = Object.keys(data)[num];
 
         table.appendChild(tbody);
         tbody.appendChild(tr);
@@ -30,14 +31,15 @@ function renderTable(page, data, totalListCount, listCountPerPage) {
         tr.appendChild(tdDate);
         tr.appendChild(tdHit);
 
-        tdSeq.innerText = Number(seq)+1;
-        aTitle.innerText = data[seq].title;
-        tdNick.innerText = data[seq].nick;
+        tdSeq.innerText = Number(num)+1;
+        aTitle.innerText = newData[num].title;
+        tdNick.innerText = newData[num].nick;
         tdDate.innerText = `${regDateObj.getFullYear()}-${addZero(regDateObj.getMonth() + 1)}-${addZero(regDateObj.getDate())}`;
-        tdHit.innerText = data[seq].hit;
+        tdHit.innerText = newData[num].hit;
         
         aTitle.addEventListener('click', () => {
-            boardRead(data[seq]);
+            boardRead(newData[num]);
+            updateHit(uniqueKey, newData[num]);
         });
     }
 }

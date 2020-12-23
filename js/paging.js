@@ -10,8 +10,8 @@ function renderTableAndPagination(page, data) {
     paginationCount = 5, // 보여줄 하단 페이지네이션 갯수
     totalPaginationBlock = Math.ceil(totalPage / paginationCount);
 
-    renderTable(page, newData, totalListCount, listCountPerPage);
-    renderPagination(page, newData, paginationCount, totalPaginationBlock, totalPage);
+    renderTable(page, newData, totalListCount, listCountPerPage, data);
+    renderPagination(page, data, paginationCount, totalPaginationBlock, totalPage);
 }
 
 function adjustData(data) {

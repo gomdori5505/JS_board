@@ -1,4 +1,4 @@
-function boardRead(data) {
+function boardRead(newData) {
     const boardReadDiv = document.querySelector("#boardRead");
 
     if(boardReadDiv.querySelector(".row")) {
@@ -27,7 +27,7 @@ function boardRead(data) {
 
     table.appendChild(tbody);
     
-    for (const key in data) {
+    for (const key in newData) {
         const tr2 = document.createElement("tr"),
         td1 = document.createElement("td"),
         td2 = document.createElement("td");
@@ -53,8 +53,33 @@ function boardRead(data) {
         const tr = tbody.querySelectorAll("tr")[i],
         td1 = tr.querySelectorAll("td")[0],
         td2 = tr.querySelectorAll("td")[1];
+        td2.classList.add(key);
         td1.innerText = korKeys[key];
-        key === "seq" ? td2.innerText = data[key] + 1 : td2.innerText = data[key];
+        key === "seq" ? td2.innerText = newData[key] + 1 : td2.innerText = newData[key];
         i++;
-    }
+    }   
+}
+
+function updateHit(uniqueKey, newDataNum) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('PATCH', `${cutJsonURL}/${uniqueKey}.json`);
+    xhr.setRequestHeader('Content-type', 'application/json');
+    xhr.send(JSON.stringify({ hit: newDataNum.hit + 1 }));
+
+    xhr.onreadystatechange = function (e) {
+        if (xhr.readyState !== XMLHttpRequest.DONE) return;
+
+        if(xhr.status === 200) {
+            console.log(xhr.responseText);
+            getData(URL);
+            const addHitCtn = () => {
+                const boardReadDiv = document.querySelector("#boardRead"),
+                hitCtnTd = boardReadDiv.querySelector(".hit");
+                hitCtnTd.innerText++;
+            }
+            addHitCtn();
+        } else {
+            console.log("Error!");
+        }
+    };
 }
