@@ -34,27 +34,15 @@ function postData(seq, title, nick, content, hit, dateTime) {
         editDateTime: dateTime,
         content
     }));
-
+    
     xhr.onreadystatechange = function (e) {
-        if (xhr.readyState !== XMLHttpRequest.DONE) return;
-
-        if(xhr.status === 200 || xhr.status === 201) { // 201: Created
+        if(xhr.readyState !== XMLHttpRequest.DONE) return;
+        if(xhr.status === 201) { // 201: Created
             console.log(xhr.responseText);
-            empty();
             location.reload();
         } else {
             console.log("Error!");
             console.log(xhr.status);
         }
     };
-}
-
-function empty() {
-    const titleInput = document.querySelector("#titleInput"),
-    nickInput = document.querySelector("#nickInput"),
-    contentTextarea = document.querySelector("#contentTextarea");
-    
-    titleInput.value = "";
-    nickInput.value = "";
-    contentTextarea.value = "";
 }
