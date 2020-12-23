@@ -15,3 +15,7 @@ h1, h4 {
 #boardRead .table tr td:nth-child(1) {
     width: 20%;
 }
+
+#boardUpdate {
+    display: none;
+}

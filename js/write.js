@@ -1,4 +1,4 @@
-function writeSubmit(data) {
+function write(data) {
     const boardWriteDiv = document.querySelector("#boardWrite"),
     titleInput = boardWriteDiv.querySelector("#titleInput"),
     nickInput = boardWriteDiv.querySelector("#nickInput"),
@@ -6,19 +6,24 @@ function writeSubmit(data) {
     submit = boardWriteDiv.querySelector("button");
     submit.addEventListener('click', () => {
         writeBoard(titleInput, nickInput, contentTextarea, adjustData(data));
+        alert("no...!!!");
     });
 }
 
 function writeBoard(titleInput, nickInput, contentTextarea, newData) {
-    const now = new Date(),
-    newSeq = Object.keys(newData).length,
+    const newSeq = Object.keys(newData).length,
     title = titleInput.value,
     nick = nickInput.value,
     content = contentTextarea.value,
     hit = 0,
-    dateTime = `${now.getFullYear()}-${addZero(now.getMonth())}-${addZero(now.getDate())} ${addZero(now.getHours())}:${addZero(now.getMinutes())}:${addZero(now.getSeconds())}`;
+    dateTime = currentDateTimeFormat();
 
     postData(newSeq, title, nick, content, hit, dateTime);
+}
+
+function currentDateTimeFormat() {
+    const now = new Date();
+    return `${now.getFullYear()}-${addZero(now.getMonth())}-${addZero(now.getDate())} ${addZero(now.getHours())}:${addZero(now.getMinutes())}:${addZero(now.getSeconds())}`;
 }
 
 function postData(seq, title, nick, content, hit, dateTime) {

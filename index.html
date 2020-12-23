@@ -59,6 +59,25 @@
                 <button type="submit" class="btn btn-primary">등록</button>
               </form>
         </div>
+        <!-- 글수정 -->
+        <div id="boardUpdate" class="container">
+            <h4>글수정</h4>
+            <form>
+                <div class="form-group">
+                  <label for="titleInput">제목</label>
+                  <input type="text" class="form-control" id="editTitleInput">
+                </div>
+                <div class="form-group">
+                    <label for="nickInput">작성자</label>
+                    <input type="text" class="form-control" id="editNickInput">
+                  </div>
+                <div class="form-group">
+                  <label for="contentTextarea">내용</label>
+                  <textarea class="form-control" id="editContentTextarea" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">수정완료</button>
+              </form>
+        </div>
     </body>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -87,4 +106,5 @@
     <script src="js/read.js"></script>
     <script src="js/write.js"></script>
     <script src="js/delete.js"></script>
+    <script src="js/update.js"></script>
 </html>

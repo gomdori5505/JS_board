@@ -35,7 +35,7 @@ function renderTable(page, newData, totalListCount, listCountPerPage, data) {
         tdSeq.innerText = seqNum;
         aTitle.innerText = newData[num].title;
         tdNick.innerText = newData[num].nick;
-        tdDate.innerText = `${regDateObj.getFullYear()}-${addZero(regDateObj.getMonth() + 1)}-${addZero(regDateObj.getDate())}`;
+        tdDate.innerText = dateFormat(regDateObj);
         tdHit.innerText = newData[num].hit;
 
         tdSeq.classList.add("seq");
@@ -118,4 +118,8 @@ function addZero(date) {
     } else {
         return date;
     }
+}
+
+function dateFormat(dateObj) {
+    return `${dateObj.getFullYear()}-${addZero(dateObj.getMonth() + 1)}-${addZero(dateObj.getDate())}`;
 }

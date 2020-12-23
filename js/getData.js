@@ -11,7 +11,7 @@ function getData(URL) {
         // json 출력
         //console.log(data);
         paging(data);
-        writeSubmit(data);
+        write(data);
     })
     .catch(err => console.log("error:", err))
 }

@@ -8,28 +8,38 @@ function boardRead(newData, uniqueKey, tdHit, seqNum) {
 
     const rowDiv = document.createElement("div"),
     table = document.createElement("table"),
-    delBtn = document.createElement("button"),
+    btnDiv = document.createElement("div"),
     thead = document.createElement("thead"),
     tbody = document.createElement("tbody"),
     tr1 = document.createElement("tr"),
-    th = document.createElement("th");
+    th = document.createElement("th"),
+    updBtn = document.createElement("button"),
+    delBtn = document.createElement("button");
 
     boardReadDiv.appendChild(rowDiv);
     rowDiv.appendChild(table);
-    rowDiv.appendChild(delBtn);
+    rowDiv.appendChild(btnDiv);
     table.appendChild(thead);
     thead.appendChild(tr1);
     tr1.appendChild(th);
+    btnDiv.appendChild(updBtn);
+    btnDiv.appendChild(delBtn);
 
     rowDiv.classList.add("row");
+    btnDiv.id = "btns";
+    btnDiv.classList.add("container");
     table.classList.add("table");
     table.classList.add("table-striped");
+    th.colSpan = 3;
+    th.innerText = "글보기";
+    updBtn.classList.add("btn");
+    updBtn.classList.add("btn-primary");
+    updBtn.type = "submit";
+    updBtn.innerText = "수정";
     delBtn.classList.add("btn");
     delBtn.classList.add("btn-primary");
     delBtn.type = "submit";
     delBtn.innerText = "삭제";
-    th.colSpan = 3;
-    th.innerText = "글보기";
 
     table.appendChild(tbody);
     
@@ -66,7 +76,10 @@ function boardRead(newData, uniqueKey, tdHit, seqNum) {
     }
     
     updateHit(newData, uniqueKey, tdHit, boardReadDiv);
-
+    
+    updBtn.addEventListener('click', () => {
+        update(newData, uniqueKey);
+    });
     delBtn.addEventListener('click', () => {
         deleteBoard(uniqueKey);
     });
