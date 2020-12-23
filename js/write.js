@@ -37,12 +37,11 @@ function postData(seq, title, nick, content, hit, dateTime) {
     
     xhr.onreadystatechange = function (e) {
         if(xhr.readyState !== XMLHttpRequest.DONE) return;
-        if(xhr.status === 201) { // 201: Created
+        if(xhr.status === 200 || xhr.status === 201) { // 201: Created
             console.log(xhr.responseText);
             location.reload();
         } else {
             console.log("Error!");
-            console.log(xhr.status);
         }
     };
 }
