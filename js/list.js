@@ -20,7 +20,8 @@ function renderTable(page, newData, totalListCount, listCountPerPage, data) {
         tdNick = document.createElement("td"),
         tdDate = document.createElement("td"),
         tdHit = document.createElement("td"),
-        uniqueKey = Object.keys(data)[num];
+        uniqueKey = Object.keys(data)[num],
+        seqNum = +num + 1;
 
         table.appendChild(tbody);
         tbody.appendChild(tr);
@@ -31,7 +32,7 @@ function renderTable(page, newData, totalListCount, listCountPerPage, data) {
         tr.appendChild(tdDate);
         tr.appendChild(tdHit);
 
-        tdSeq.innerText = Number(num)+1;
+        tdSeq.innerText = seqNum;
         aTitle.innerText = newData[num].title;
         tdNick.innerText = newData[num].nick;
         tdDate.innerText = `${regDateObj.getFullYear()}-${addZero(regDateObj.getMonth() + 1)}-${addZero(regDateObj.getDate())}`;
@@ -44,7 +45,7 @@ function renderTable(page, newData, totalListCount, listCountPerPage, data) {
         tdHit.classList.add("hit");
         
         aTitle.addEventListener('click', () => {
-            boardRead(newData[num], uniqueKey, tdHit);
+            boardRead(newData[num], uniqueKey, tdHit, seqNum);
         });
     }
 }

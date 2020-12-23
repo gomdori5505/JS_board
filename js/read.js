@@ -1,4 +1,4 @@
-function boardRead(newData, uniqueKey, tdHit) {
+function boardRead(newData, uniqueKey, tdHit, seqNum) {
     const boardReadDiv = document.querySelector("#boardRead");
 
     if(boardReadDiv.querySelector(".row")) {
@@ -8,6 +8,7 @@ function boardRead(newData, uniqueKey, tdHit) {
 
     const rowDiv = document.createElement("div"),
     table = document.createElement("table"),
+    delBtn = document.createElement("button"),
     thead = document.createElement("thead"),
     tbody = document.createElement("tbody"),
     tr1 = document.createElement("tr"),
@@ -15,6 +16,7 @@ function boardRead(newData, uniqueKey, tdHit) {
 
     boardReadDiv.appendChild(rowDiv);
     rowDiv.appendChild(table);
+    rowDiv.appendChild(delBtn);
     table.appendChild(thead);
     thead.appendChild(tr1);
     tr1.appendChild(th);
@@ -22,6 +24,10 @@ function boardRead(newData, uniqueKey, tdHit) {
     rowDiv.classList.add("row");
     table.classList.add("table");
     table.classList.add("table-striped");
+    delBtn.classList.add("btn");
+    delBtn.classList.add("btn-primary");
+    delBtn.type = "submit";
+    delBtn.innerText = "삭제";
     th.colSpan = 3;
     th.innerText = "글보기";
 
@@ -55,10 +61,15 @@ function boardRead(newData, uniqueKey, tdHit) {
         td2 = tr.querySelectorAll("td")[1];
         td2.classList.add(key);
         td1.innerText = korKeys[key];
-        key === "seq" ? td2.innerText = newData[key] + 1 : td2.innerText = newData[key];
+        key === "seq" ? td2.innerText = seqNum : td2.innerText = newData[key];
         i++;
     }
+    
     updateHit(newData, uniqueKey, tdHit, boardReadDiv);
+
+    delBtn.addEventListener('click', () => {
+        deleteBoard(uniqueKey);
+    });
 }
 
 function updateHit(newDataNum, uniqueKey, tdHit, boardReadDiv) {

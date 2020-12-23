@@ -15,11 +15,13 @@ function renderTableAndPagination(page, data) {
 }
 
 function adjustData(data) {
-    var newData = {};
+    var newData = {},
+    i = 0;
+    
     for (const key in data) {
         let tempData = {};
         tempData = data[key];
-        newData[tempData["seq"]] = tempData;
+        newData[i++] = tempData;
     }
     return newData;
 }
