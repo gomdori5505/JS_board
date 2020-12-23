@@ -36,10 +36,15 @@ function renderTable(page, newData, totalListCount, listCountPerPage, data) {
         tdNick.innerText = newData[num].nick;
         tdDate.innerText = `${regDateObj.getFullYear()}-${addZero(regDateObj.getMonth() + 1)}-${addZero(regDateObj.getDate())}`;
         tdHit.innerText = newData[num].hit;
+
+        tdSeq.classList.add("seq");
+        tdTitle.classList.add("title");
+        tdNick.classList.add("nick");
+        tdDate.classList.add("regDateTime");
+        tdHit.classList.add("hit");
         
         aTitle.addEventListener('click', () => {
-            boardRead(newData[num]);
-            updateHit(uniqueKey, newData[num]);
+            boardRead(newData[num], uniqueKey, tdHit);
         });
     }
 }
@@ -64,7 +69,7 @@ function renderPagination(page, data, paginationCount, totalPaginationBlock, tot
 
     for (var index = startPage; index <= endPage; index++) {
         paginationHTML += (parseInt(page) === parseInt(index)) ?
-            '<li class="active"><a href="#">' + index + "</a></li>" : "<li class='go_page'><a href='#' data-value="+ index +">" + index + "</a></li>";
+            '<li class="active"><a>' + index + "</a></li>" : "<li class='go_page'><a data-value="+ index +">" + index + "</a></li>";
     }
 
     if (block < totalPaginationBlock) paginationHTML += "<li class='next next_page'><a href='#'><span>›</span></a></li>";
