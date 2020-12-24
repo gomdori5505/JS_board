@@ -6,7 +6,6 @@ function write(data) {
     submit = boardWriteDiv.querySelector("button");
     submit.addEventListener('click', () => {
         writeBoard(titleInput, nickInput, contentTextarea, adjustData(data));
-        alert("no...!!!");
     });
 }
 
