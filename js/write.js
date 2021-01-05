@@ -22,7 +22,8 @@ function writeBoard(titleInput, nickInput, contentTextarea, newData) {
 
 function currentDateTimeFormat() {
     const now = new Date();
-    return `${now.getFullYear()}-${addZero(now.getMonth())}-${addZero(now.getDate())} ${addZero(now.getHours())}:${addZero(now.getMinutes())}:${addZero(now.getSeconds())}`;
+    alert(`${now.getFullYear()}-${addZero(+now.getMonth() + 1)}-${addZero(now.getDate())} ${addZero(now.getHours())}:${addZero(now.getMinutes())}:${addZero(now.getSeconds())}`);
+    return `${now.getFullYear()}-${addZero(+now.getMonth() + 1)}-${addZero(now.getDate())} ${addZero(now.getHours())}:${addZero(now.getMinutes())}:${addZero(now.getSeconds())}`;
 }
 
 function postData(seq, title, nick, content, hit, dateTime) {

@@ -121,5 +121,5 @@ function addZero(date) {
 }
 
 function dateFormat(dateObj) {
-    return `${dateObj.getFullYear()}-${addZero(dateObj.getMonth() + 1)}-${addZero(dateObj.getDate())}`;
+    return `${dateObj.getFullYear()}-${addZero(+dateObj.getMonth() + 1)}-${addZero(dateObj.getDate())}`;
 }
